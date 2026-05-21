@@ -1,8 +1,7 @@
 "use client";
 
-import { gsap } from "gsap";
+import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
-
 import { navLinks } from "@/constants";
 
 export default function Navbar() {
@@ -11,10 +10,14 @@ export default function Navbar() {
             scrollTrigger: {
                 trigger: "nav",
                 start: "bottom top",
+                
             }
         });
 
-        navTween.fromTo('nav', { backgroundColor: 'transparent' }, { backgroundColor: '#00000050', backgroundFilter: 'blur(10px)', duration: 1, ease: 'power1.inOut' });
+        navTween.fromTo('nav', 
+            { backgroundColor: 'transparent', backDropFilter: 'blur(0px)' },
+            { backgroundColor: '#00000050', backdropFilter: 'blur(10px)', duration: 1, ease: 'power1.inOut' }
+        );
     })
 
     return (
