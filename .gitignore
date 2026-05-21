@@ -10,6 +10,9 @@
 !.yarn/releases
 !.yarn/versions
 
+# assets too heavy for git
+/public
+
 # testing
 /coverage
 
