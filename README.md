@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<h1 align="center">Velvet Pour</h1>
 
-## Getting Started
+<p align="center">
+  An animated cocktail bar landing page built with Next.js and GSAP.
+</p>
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Overview
+
+Velvet Pour is a single-page site for a fictional cocktail bar. I built it to practise **scroll-driven animation with GSAP**: text that splits and staggers in, parallax leaves, pinned sections, and a hero video that plays forward and back as you scroll.
+
+It's based on the [JavaScript Mastery](https://www.youtube.com/@javascriptmastery) GSAP cocktail tutorial, rebuilt in **Next.js 16 + TypeScript** (the original uses React + Vite).
+
+## Sections
+
+| Section | What it shows |
+|---|---|
+| **Navbar** | Background blur that fades in once you scroll |
+| **Hero** | "MOJITO" title split into characters and staggered in, parallax leaves, and a pinned video **scrubbed by scroll position** |
+| **Cocktails** | Lists of popular cocktails and mocktails with scroll-linked leaf parallax |
+| **About** | Headline split into words, image grid revealed in sequence |
+| **The Art** | Pinned section where a masked image expands to full screen as you scroll (simplified layout on mobile) |
+| **Menu** | Cocktail slider with prev/next navigation, wrap-around and animated transitions per slide |
+| **Contact** | Address, hours and socials with staggered text reveals |
+
+## Animation techniques
+
+- **SplitText** for character, word and line reveals
+- **ScrollTrigger** with `scrub` and `pin` to link animations to scroll position
+- **Scroll-controlled video**: the hero timeline tweens `video.currentTime` from 0 to the video's duration
+- **Responsive timelines** using `react-responsive` to change trigger start/end points on mobile
+- **`useGSAP`** hook for React-safe setup and automatic cleanup
+
+## Tech stack
+
+| Area | Tools |
+|---|---|
+| Framework | [Next.js 16](https://nextjs.org/) (App Router), [React 19](https://react.dev/), [TypeScript](https://www.typescriptlang.org/) |
+| Animation | [GSAP 3](https://gsap.com/) (ScrollTrigger, SplitText), [`@gsap/react`](https://gsap.com/resources/React/) |
+| Styling | [Tailwind CSS 4](https://tailwindcss.com/) |
+| Responsive | [react-responsive](https://github.com/yocontra/react-responsive) |
+
+## Project structure
+
+```
+app/
+  components/      # Navbar, Hero, Cocktails, About, Art, Menu, Contact
+  page.tsx         # Composes the sections
+  layout.tsx
+  globals.css
+constants/
+  index.tsx        # Nav links, drink lists, slider data, hours, socials
+lib/
+  gsap.js          # Registers ScrollTrigger + SplitText once
+public/            # Images and the hero video
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Getting started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+git clone https://github.com/EttoreTheWebisteMaster/cocktail-website.git
+cd cocktail-website
+npm install
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open [http://localhost:3000](http://localhost:3000).
 
-## Learn More
+> [!NOTE]
+> The site needs the images in `public/images/` and the hero video at `public/videos/output.mp4`.
 
-To learn more about Next.js, take a look at the following resources:
+### Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Script | Description |
+|---|---|
+| `npm run dev` | Start the dev server |
+| `npm run build` | Production build |
+| `npm run start` | Start the production server |
+| `npm run lint` | Lint with ESLint |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Credits
 
-## Deploy on Vercel
+- Design and assets: [JavaScript Mastery](https://www.youtube.com/@javascriptmastery) GSAP tutorial
+- Animation library: [GSAP](https://gsap.com/)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Author
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Ettore Serra** — Developer & designer
+
+- Portfolio: [ettoreserra.it](https://www.ettoreserra.it)
+- GitHub: [@EttoreTheWebisteMaster](https://github.com/EttoreTheWebisteMaster/)
+- LinkedIn: [ettore-serra-developer](https://www.linkedin.com/in/ettore-serra-developer/)
